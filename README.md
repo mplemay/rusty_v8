@@ -157,13 +157,12 @@ is recommended.
 Arguments can be passed to `gn` by setting the `$GN_ARGS` environmental
 variable.
 
-For Linux targets, `rusty_v8` now defaults to defining
-`V8_TLS_USED_IN_LIBRARY` via GN args when building from source so the produced
-static archive can be linked into downstream `cdylib`/shared-library targets.
-The default injected argument is:
+For Linux targets, `rusty_v8` now defaults to enabling shared-library-safe V8
+TLS mode when building from source so the produced static archive can be linked
+into downstream `cdylib`/shared-library targets. The default injected GN arg is:
 
 ```bash
-GN_ARGS='extra_cflags=["-DV8_TLS_USED_IN_LIBRARY"]'
+GN_ARGS='v8_monolithic_for_shared_library=true'
 ```
 
 Linux prebuilt release archives published by this repository are built with
